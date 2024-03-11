@@ -47,7 +47,7 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.btn-user:hover, .section-item-followers:hover {
+.btn-user-active, .btn-user:hover, .section-item-followers:hover {
   background-color: #aaaaaa;
 }
 #section-followers-content {

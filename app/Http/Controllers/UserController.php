@@ -16,7 +16,7 @@ class UserController extends Controller
   public function findAllUsers(Request $request)
   {
     $search = $request->input('search');
-    $token = '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';
+    $token = env('GITHUB_TOKEN', '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');
     $headers = [
       'Accept' => 'application/vnd.github+json',
     ];
@@ -40,7 +40,7 @@ class UserController extends Controller
   public function findFollowersByUser(Request $request, $username)
   {
     $page = $request->input('page') ?? 1;
-    $token = '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';
+    $token = env('GITHUB_TOKEN', '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');
     $headers = [
       'Accept' => 'application/vnd.github+json',
     ];

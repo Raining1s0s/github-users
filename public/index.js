@@ -4,7 +4,13 @@ const searchFollowers = async (username, page) => {
     console.log("ok");
     // Get Followers
     followerPage = page;
+    if (currentUserName)
+        document.getElementById(`user-${currentUserName}`).className =
+            "btn-user";
     currentUserName = username;
+    document.getElementById(`user-${username}`).className =
+        "btn-user btn-user-active";
+
     const data = await (
         await fetch(
             `http://127.0.0.1:8000/api/users/${username}/followers/?page=${followerPage}`
@@ -51,7 +57,7 @@ const searchUsers = async () => {
             const avatar = user.avatar_url;
 
             // template
-            return `<button class="btn-user" onclick="searchFollowers('${username}', 1)">
+            return `<button class="btn-user" onclick="searchFollowers('${username}', 1)" id="user-${username}">
             <span>${username}</span>
             <img src="${avatar}" class="avatar"/>
             </button>`;
