@@ -13,7 +13,7 @@ const searchFollowers = async (username, page) => {
     console.log("ok");
     // Get Followers
     followerPage = page;
-    if (currentUserName)
+    if (currentUserName?.length > 0)
         document.getElementById(`user-${currentUserName}`).className =
             "btn-user";
     currentUserName = username;
