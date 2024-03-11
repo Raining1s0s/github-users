@@ -1,5 +1,14 @@
 let followerPage = 1;
 let currentUserName = "";
+const debounce = (func, timeout) => {
+    let id = -1;
+    return () => {
+        if (id !== -1) clearTimeout(id);
+        id = setTimeout(() => {
+            func();
+        }, timeout);
+    };
+};
 const searchFollowers = async (username, page) => {
     console.log("ok");
     // Get Followers
@@ -64,10 +73,10 @@ const searchUsers = async () => {
         })
         .join("");
 };
-
+const debouncedSearchUsers = debounce(searchUsers, 500);
 document
     .getElementById("input-search-user")
-    .addEventListener("change", searchUsers);
+    .addEventListener("input", debouncedSearchUsers);
 document.getElementById("btn-load-more").addEventListener("click", () => {
     searchFollowers(currentUserName, followerPage + 1);
 });
